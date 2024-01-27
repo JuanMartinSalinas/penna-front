@@ -1,0 +1,14 @@
+.title {
+    background-color:#222534;    
+    border-radius:5px;
+    margin-bottom:0.4em;
+    font-size:2rem;
+    padding:0.3em;
+}
+
+.renderingInfo {
+    border-radius:5px;
+    min-height:400px;
+    min-width:300px;
+    background-color:#222534;
+}

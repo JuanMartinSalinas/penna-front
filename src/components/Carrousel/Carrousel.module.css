@@ -1,0 +1,93 @@
+.mainBox {
+    width:500px;
+    height:500px;
+    margin:auto;
+    padding-left:15em;
+    padding-right:15em;
+    margin-top:2em;
+    margin-bottom:-120px;
+    overflow:hidden;
+}
+
+.carrousel {
+    width:100%;
+    border-radius:5px;
+    background-color: #222534;
+}
+
+.grande {
+    width:500%;
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items:center;
+    border-radius:5px;
+    transition: all 0.5s ease;
+    transform:translateX(0%);
+}
+    .grandeAnimated {
+        width:500%;
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items:center;
+        border-radius:5px;
+        transition: all 0.5s ease;
+        transform:translateX(0%);
+        animation:carrus 20s ease 2s infinite reverse;
+    }
+    /* @keyframes carrus {
+        0% {transform:translate(0%)}
+        6.25% {transform:translate(-20%)}
+        12.5% {transform:translate(-20%)}
+        18.75% {transform:translate(-40%)}
+        25% {transform:translate(-40%)}
+        31.25% {transform:translate(-60%)}
+        37.5% {transform:translate(-60%)}
+        43.75% {transform:translate(-80%)}
+        50% {transform:translate(-80%)}
+        56.25% {transform:translate(-60%)}
+        62.5% {transform:translate(-60%)}
+        68.75% {transform:translate(-40%)}
+        75% {transform:translate(-40%)}
+        81.25% {transform:translate(-20%)}
+        87.5% {transform:translate(-20%)}
+        93.75% {transform:translate(-0%)}
+    } */
+
+.carrousel .imgBox {
+    width:100%;
+}
+
+.carrousel .img {
+    padding:10px;
+    height:300px;
+    object-fit:contain;
+    width:90%;
+    box-sizing: border-box;
+    transition:0.2s ease-in;
+}
+    .img[data-status="unknown"] {
+        transform:scale(0.5);
+        transition:0.2s ease-in;
+    }
+
+
+.carrousel .puntos {
+    width:100%;
+    margin-top:0.3em;
+    background-color: #3a3e57;
+    display:flex;
+    flex-flow: row nowrap;
+    border-radius:5px;
+    justify-content: center;
+    align-items:center;
+}
+.carrousel .punto {
+    width:0.5em;
+    height:0.5em;
+    margin:0.5em;
+    background-color: rgb(255, 255, 255);
+    border-radius:50px;
+    cursor:pointer;
+}
