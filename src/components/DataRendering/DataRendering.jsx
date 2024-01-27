@@ -3,7 +3,7 @@ import styles from './DataRendering.module.css'
 
 function DataRendering() {
 
-    const [userData, setUserData] = useState([{id:1,    name:"nombre",surname:"apellido",cellphone:"teléfono",birthday:"cum"}]);
+    const [userData, setUserData] = useState([{id:1, name:"nombre",surname:"apellido",cellphone:"teléfono",birthday:"cum"}]);
     const [imageData, setImageData] = useState([]);
     const [pdfData, setPdfData] = useState([]);
 

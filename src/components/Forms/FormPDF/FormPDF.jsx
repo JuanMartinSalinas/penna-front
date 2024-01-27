@@ -10,6 +10,14 @@ function FormPDF() {
     })
     const fileRef = useRef(null);
 
+    const postPDF = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      };
+
     useEffect(() => {
         if(data.title && data.file) {
             setDisabled(false);
@@ -31,6 +39,16 @@ function FormPDF() {
 
     function submitData(e) {
         e.preventDefault()
+
+        fetch("http://localhost:3001/api/prueba/pdf", postPDF)
+        .then((res) => {
+            if(!res.ok) {
+                console.log(res);
+                alert("Ha habido un error en la solicitud. Por favor, inténtelo de nuevo.")
+            } else {
+                alert("Sus datos han sido cargados exitosamente.");            
+            }
+        })
         console.log("Archivo seleccionado:", data);
         setDisabled(true);
         setData({

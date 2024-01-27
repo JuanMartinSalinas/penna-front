@@ -24,19 +24,16 @@ function Carrousel() {
         carouselList.style.transform = `translateX(${index*-20}%)`;
     }
 
-    // function retardedScrolling(i) {
-    //     setTimeout(() => {
-    //         scrolling(i)
-    //         if(i === 4) i = 0;      
-    //     }, i * 2500);
-    // }
 
-    // useEffect(() => {
-        // for(let i = 0; i < 5 ; i++) {
-        //     retardedScrolling(i)
-        //     // if(i === 4) i = 0;
-        // }
-    // },[retardedScrolling])
+    useEffect(() => {
+        for(let i = 0; i < 5 ; i++) {
+            const intervalId = setInterval(scrolling(i), 2500);
+            // setTimeout(() => {
+            //     scrolling(i)      
+            // }, i * 2500);
+            return () => clearInterval(intervalId);
+        }
+    },[scrolling])
 
 
     return (

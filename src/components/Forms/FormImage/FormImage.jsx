@@ -4,11 +4,16 @@ import styles from './FormImage.module.css'
 function FormImage() {
 
     const [disabled, setDisabled] = useState(true);
-    const [data, setData] = useState({
-        title:"",
-        image:"",
-    })
+    const [data, setData] = useState({})
     const imgRef = useRef(null);
+
+    const postImage = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      };
 
     function handleChange(e) {
         if(e.target.files) {
@@ -24,11 +29,20 @@ function FormImage() {
     }
     function submitData(e) {
         e.preventDefault();
-        alert("Sus datos han sido cargados exitosamente.");
+
+        fetch("http://localhost:3001/api/prueba/image", postImage)
+            .then((res) => {
+                if(!res.ok) {
+                    console.log(res);
+                    alert("Ha habido un error en la solicitud. Por favor, inténtelo de nuevo.")
+                } else {
+                    alert("Sus datos han sido cargados exitosamente.");            
+                }
+                })
         console.log("Archivo seleccionado:", data);
         setData({
-            title: "",
-            image:"",
+            titulo: "",
+            file:"",
         });
         setDisabled(true);
         imgRef.current.value = null;
