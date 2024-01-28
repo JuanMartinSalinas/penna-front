@@ -7,39 +7,38 @@ function FormImage() {
     const [data, setData] = useState({})
     const imgRef = useRef(null);
 
-    const postImage = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      };
-
     function handleChange(e) {
         if(e.target.files) {
             const selectedArchive = e.target.files[0];
             setData({
-                ...data, image: selectedArchive
+                ...data, file: selectedArchive
             })
         } else {
             setData({
-                ...data, title: e.target.value
+                ...data, titulo: e.target.value
             })
         }
     }
     function submitData(e) {
         e.preventDefault();
+        // console.log(data);
 
-        fetch("http://localhost:3001/api/prueba/image", postImage)
+        const formData = new FormData();
+        formData.append('titulo',data.titulo);
+        formData.append('file', data.file);
+        console.log(data.file);
+
+        fetch("http://localhost:3001/api/prueba/image", {
+            method: 'POST',
+            body: formData,
+          })
             .then((res) => {
                 if(!res.ok) {
-                    console.log(res);
                     alert("Ha habido un error en la solicitud. Por favor, inténtelo de nuevo.")
                 } else {
                     alert("Sus datos han sido cargados exitosamente.");            
                 }
-                })
-        console.log("Archivo seleccionado:", data);
+            })
         setData({
             titulo: "",
             file:"",
@@ -49,10 +48,10 @@ function FormImage() {
     }
 
     useEffect(() => {
-        if(data.title && data.image) {
+        if(data.titulo && data.file) {
             setDisabled(false);
         }
-    },[data.title, data.image])
+    },[data.titulo, data.file])
 
     return (
         <div className={styles.mainBox}>
@@ -61,9 +60,9 @@ function FormImage() {
                     <label>Título de la imagen</label>
                     <input
                         className={styles.input}
-                        value={data.title}
+                        value={data.titulo}
                         type="text"
-                        name="title"
+                        name="titulo"
                         onChange={(e) => handleChange(e)}
                     />
                 </div>
@@ -73,7 +72,7 @@ function FormImage() {
                         className={styles.input}
                         type="file"
                         accept="image/*"
-                        name="image"
+                        name="file"
                         ref={imgRef}
                         onChange={(e) => handleChange(e)}
                     />

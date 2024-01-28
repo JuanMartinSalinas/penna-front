@@ -1,3 +1,7 @@
+.mainBox {
+    max-width:30%;
+}
+
 .title {
     background-color:#222534;    
     border-radius:5px;
@@ -8,7 +12,14 @@
 
 .renderingInfo {
     border-radius:5px;
-    min-height:400px;
+    min-height:200px;
+    min-width:300px;
+    background-color:#222534;
+}
+
+.renderingPDF {
+    border-radius:5px;
+    min-height:200px;
     min-width:300px;
     background-color:#222534;
 }

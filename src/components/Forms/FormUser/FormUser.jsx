@@ -10,32 +10,34 @@ export default function FormUser() {
         numero:0,
         fecha:"",
     });
+    const [userData, setUserData] = useState([]);
 
-    const postUser = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      };
-
-
-    useEffect(() => {
-        if(data.nombre && data.apellido && data.numero && data.fecha) {
-            setDisabled(false);
-        }
-    },[data.nombre, data.apellido, data.numero, data.fecha])
-
-    
     function handleChange(e) {
         setData({
             ...data, [e.target.name]: e.target.value,
         })
     }
+
+    // async function submitData(name) {
+    //     try {
+    //         const result = await fetch("http://localhost:3001/api/prueba/users");
+    //         const body = await result.json();
+    //         setUserData([body]);
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
+
     function handleSubmit(e) {
-        e.preventDefault();
         try {
-            fetch("http://localhost:3001/api/prueba/users", postUser)
+            fetch("http://localhost:3001/api/prueba/users", {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              })
             .then((res) => {
                 if(!res.ok) {
                     alert("Ha habido un error en la solicitud. Por favor, inténtelo de nuevo.")
@@ -53,6 +55,12 @@ export default function FormUser() {
             fecha:"",
         });
     }
+
+    useEffect(() => {
+        if(data.nombre && data.apellido && data.numero && data.fecha) {
+            setDisabled(false);
+        }
+    },[data.nombre, data.apellido, data.numero, data.fecha])
 
 
     return (

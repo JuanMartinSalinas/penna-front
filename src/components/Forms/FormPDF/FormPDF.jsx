@@ -5,24 +5,10 @@ function FormPDF() {
 
     const [disabled, setDisabled] = useState(true);
     const [data, setData] = useState({
-        title:"",
+        titulo:"",
         file:"",
     })
     const fileRef = useRef(null);
-
-    const postPDF = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      };
-
-    useEffect(() => {
-        if(data.title && data.file) {
-            setDisabled(false);
-        }
-    },[data.file, data.title])
 
     function handleChange(e) {
         if(e.target.files) {
@@ -32,31 +18,43 @@ function FormPDF() {
             })
         } else {
             setData({
-                ...data, title: e.target.value
+                ...data, titulo: e.target.value
             })
         }
     }
 
     function submitData(e) {
-        e.preventDefault()
 
-        fetch("http://localhost:3001/api/prueba/pdf", postPDF)
-        .then((res) => {
-            if(!res.ok) {
-                console.log(res);
-                alert("Ha habido un error en la solicitud. Por favor, inténtelo de nuevo.")
-            } else {
-                alert("Sus datos han sido cargados exitosamente.");            
-            }
-        })
-        console.log("Archivo seleccionado:", data);
-        setDisabled(true);
+        const formData = new FormData();
+        formData.append('titulo',data.titulo);
+        formData.append('file', data.file);
+        console.log(data.file);
+
+        fetch("http://localhost:3001/api/prueba/pdf", {
+            method: 'POST',
+            body: formData,
+          })
+            .then((res) => {
+                if(!res.ok) {
+                    alert("Ha habido un error en la solicitud. Por favor, inténtelo de nuevo.")
+                } else {
+                    alert("Sus datos han sido cargados exitosamente.");            
+                }
+            })
         setData({
-            title: "",
+            titulo: "",
             file:"",
         });
+        setDisabled(true);
         fileRef.current.value = null;
     }
+
+    useEffect(() => {
+        if(data.titulo && data.file) {
+            setDisabled(false);
+        }
+    },[data.file, data.titulo])
+
 
     return (
         <div className={styles.mainBox}>
@@ -66,8 +64,8 @@ function FormPDF() {
                     <input
                         className={styles.input}
                         type="text"
-                        name="title"
-                        value={data.title}
+                        name="titulo"
+                        value={data.titulo}
                         onChange={(e) => handleChange(e)}
                     />
                 </div>
