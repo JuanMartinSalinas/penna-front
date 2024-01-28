@@ -5,7 +5,7 @@
     padding-left:15em;
     padding-right:15em;
     margin-top:2em;
-    margin-bottom:-120px;
+    margin-bottom:-6em;
     overflow:hidden;
 }
 
@@ -13,6 +13,7 @@
     width:100%;
     border-radius:5px;
     background-color: #222534;
+    cursor:pointer;
 }
 
 .grande {
@@ -36,24 +37,6 @@
         transform:translateX(0%);
         animation:carrus 20s ease 2s infinite reverse;
     }
-    /* @keyframes carrus {
-        0% {transform:translate(0%)}
-        6.25% {transform:translate(-20%)}
-        12.5% {transform:translate(-20%)}
-        18.75% {transform:translate(-40%)}
-        25% {transform:translate(-40%)}
-        31.25% {transform:translate(-60%)}
-        37.5% {transform:translate(-60%)}
-        43.75% {transform:translate(-80%)}
-        50% {transform:translate(-80%)}
-        56.25% {transform:translate(-60%)}
-        62.5% {transform:translate(-60%)}
-        68.75% {transform:translate(-40%)}
-        75% {transform:translate(-40%)}
-        81.25% {transform:translate(-20%)}
-        87.5% {transform:translate(-20%)}
-        93.75% {transform:translate(-0%)}
-    } */
 
 .carrousel .imgBox {
     width:100%;

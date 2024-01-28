@@ -1,5 +1,5 @@
 .mainBox {
-    max-width:30%;
+    width:40%;
 }
 
 .title {
@@ -15,6 +15,12 @@
     min-height:200px;
     min-width:300px;
     background-color:#222534;
+    margin-bottom:0.2em;
+    padding:0.2em;
+    padding-left:1em;
+    font-size:1.3rem;
+    text-align: left;
+    line-height:2.4em;
 }
 
 .renderingPDF {
@@ -22,4 +28,44 @@
     min-height:200px;
     min-width:300px;
     background-color:#222534;
+    padding:0.3em;
 }
+
+.pdfView {
+    border:0px solid transparent;
+    border-radius:5px;
+    min-height:200px;
+}
+
+.pdfBox {
+    display:flex;
+    margin:0.5em;
+}
+
+.nameAndDownload {
+    padding-left:0.5em;
+    justify-content: left;
+    text-align: left;
+}
+
+.pdfTitle {
+    margin-bottom:0.5em;
+}
+
+.pdfDownload {
+    font-size:1rem;
+    padding:0.3em;
+    color:white;
+    background-color: transparent;
+    border:1px solid white;
+    border-radius:15px;
+    transition:0.2s ease-in;
+    cursor:pointer;
+    text-decoration:none;
+}
+    .pdfDownload:hover {
+        background-color: white;
+        color:black;
+        transition:0.2s ease-out;
+        cursor:pointer;
+    }
