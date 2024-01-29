@@ -32,7 +32,7 @@ function Carrousel() {
           currentIndex = (currentIndex + 1) % 5;
           scrolling(currentIndex);
         }
-      }, 3000);
+      }, 2000);
     };
   
     const handleMouseEnter = () => {
@@ -47,13 +47,13 @@ function Carrousel() {
     useEffect(() => {
       autoScroll();
       return () => clearInterval(intervalRef.current);
-    }, [isMouseOver]);
+    }, [isMouseOver,autoScroll]);
 
 
     return (
         <div className={styles.mainBox}>
-            <div className={styles.carrousel}>
-                <div ref={carouselRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={styles.grande}>
+            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={styles.carrousel}>
+                <div ref={carouselRef} className={styles.grande}>
                     <div className={styles.imgBox}><img className={styles.img} src={dog1} data-index="0" data-status="active" alt="img"/></div>
                     <div className={styles.imgBox}><img className={styles.img} src={dog2} data-index="1" data-status="unknown" alt="img"/></div>
                     <div className={styles.imgBox}><img className={styles.img} src={dog3} data-index="2" data-status="unknown" alt="img"/></div>
@@ -68,17 +68,6 @@ function Carrousel() {
                     <li className={styles.punto} onClick={()=>scrolling(4)}></li>
                 </ul> */}
             </div>
-            <div id="box">
-                A
-            </div>
-
-                {/* {images?.map((e) => {
-                return (
-                    <div key={e.id}>
-                        <img src={e.url}/>
-                    </div>
-                )
-            })} */}
         </div>
     );
 }

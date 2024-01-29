@@ -10,7 +10,7 @@ export default function FormUser() {
         numero:0,
         fecha:"",
     });
-    const [userData, setUserData] = useState([]);
+    // const [userData, setUserData] = useState([]);
 
     function handleChange(e) {
         setData({

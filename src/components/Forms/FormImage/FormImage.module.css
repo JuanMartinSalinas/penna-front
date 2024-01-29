@@ -4,6 +4,7 @@
     padding:0.4em;
     border-radius: 5px;
     margin:0.1em;
+    margin-bottom:0.2em;
 }
 
 .formBox {
@@ -24,7 +25,11 @@ label {
 
 input {
     width:100%;
+    height:20px;
     box-sizing: border-box;
+    border-radius:5px;
+    border:0px solid transparent;
+    padding-left:0.3em;
 }
 
 .submitButton {
