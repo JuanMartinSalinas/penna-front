@@ -7,33 +7,39 @@ function DataRendering() {
     const [imageData, setImageData] = useState([]);
     const [pdfData, setPdfData] = useState([]);
 
+    // function getImage() {
+    //     fetch("http://localhost:3001/api/prueba/image")
+    //         .then((res) => res.json())
+    //         .then((data) => setImageData(data))
+    //     .catch(console.error);
+    // }
 
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const result = await fetch("http://localhost:3001/api/prueba/users")
-                const body = await result.json();
-                const users = body.users;
-                const finalUsers = users.splice(-1)
-                setUserData(finalUsers); 
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        const getPDF = async () => {
-            try {
-                const result = await fetch("http://localhost:3001/api/prueba/pdf")
-                const body = await result.json();
-                const pdf = body.files
-                const finalPdf = pdf.splice(-1)
-                setPdfData(finalPdf);
-            } catch (error) {
-               console.log(error)
-            }
-        }
-        getUser();
-        getPDF();
-    },[])
+    // useEffect(() => {
+    //     const getUser = async () => {
+    //         try {
+    //             const result = await fetch("http://localhost:3001/api/prueba/users")
+    //             const body = await result.json();
+    //             const users = body.users;
+    //             const finalUsers = users.splice(-1)
+    //             setUserData(finalUsers); 
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    //     const getPDF = async () => {
+    //         try {
+    //             const result = await fetch("http://localhost:3001/api/prueba/pdf")
+    //             const body = await result.json();
+    //             const pdf = body.files
+    //             const finalPdf = pdf.splice(-1)
+    //             setPdfData(finalPdf);
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     getUser();
+    //     getPDF();
+    // },[])
 
     return (
         <div className={styles.mainBox}>
